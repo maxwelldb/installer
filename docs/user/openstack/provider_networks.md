@@ -1,7 +1,7 @@
 # Provider Networks
 
-
 ## Table of Contents
+
 - [Provider Networks](#provider-networks)
   - [Table of Contents](#table-of-contents)
   - [Introduction](#introduction)
@@ -9,7 +9,6 @@
   - [Considerations when creating provider networks](#considerations-when-creating-provider-networks)
   - [Deploying cluster with primary interface on a provider network with IPI](#deploying-cluster-with-primary-interface-on-a-provider-network-with-ipi)
   - [Known issues](#known-issues)
-
 
 ## Introduction
 
@@ -24,13 +23,11 @@ on a tenant network:
 
 ![OCP on a provider network](provider-network.png)
 
-
 ## Prerequisites
 
 * The [Neutron service][2] is enabled and accessible through the [OpenStack Networking API][3].
 * The Neutron service is configured with the [port-security and allowed-address-pairs][4] extensions so the installer can
   add the `allowed_address_pairs` attribute to ports.
-
 
 ## Considerations when creating provider networks
 
@@ -68,18 +65,16 @@ on a tenant network:
 **Note:** We're working on removing the nova-metadata requirement but for now it is strongly required to be
           enabled in the cloud and reachable from the provider network.
 
-
 ## Deploying cluster with primary interface on a provider network with IPI
-
 
 - Considerations: make sure all prerequisites documented previously have been met.
 
 - Create install-config.yaml:
 
-    - Set `platform.openstack.apiVIP` to the IP address for the API VIP.
-    - Set `platform.openstack.ingressVIP` to the IP address for the Ingress VIP.
-    - Set `platform.openstack.machinesSubnet` to the subnet ID of the provider network subnet.
-    - Set `networking.machineNetwork.cidr` to the CIDR of the provider network subnet.
+  - Set `platform.openstack.apiVIP` to the IP address for the API VIP.
+  - Set `platform.openstack.ingressVIP` to the IP address for the Ingress VIP.
+  - Set `platform.openstack.machinesSubnet` to the subnet ID of the provider network subnet.
+  - Set `networking.machineNetwork.cidr` to the CIDR of the provider network subnet.
 
 **Note:**
 
@@ -104,7 +99,6 @@ address on the `networking.machineNetwork.cidr`.
       ./openshift-install create cluster --log-level debug
 
 - Wait for the installer to complete.
-
 
 [1]: <https://docs.openstack.org/neutron/latest/admin/archives/adv-features.html#provider-networks>
 [2]: <https://docs.openstack.org/neutron>
